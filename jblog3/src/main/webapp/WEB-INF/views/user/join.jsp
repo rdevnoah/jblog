@@ -32,7 +32,7 @@ $(function(){
 		if(blog_id == ''){
 			return;
 		};
-		alert(blog_id);
+		
 		
 		/* ajax 통신 */
 		$.ajax({

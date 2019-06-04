@@ -32,7 +32,7 @@ $(function(){
 				var count = response.length;
 				for (var i=0; i<response.length; i++){
 					
-					html+="<tr><td>"+(count-i+1)+"</td>";
+					html+="<tr><td>"+(count-i)+"</td>";
 					html+="<td>"+response[i].name+"</td>";
 					html+="<td>"+response[i].count+"</td>";
 					html+="<td>"+response[i].description+"</td>";
@@ -75,7 +75,7 @@ $(function(){
 				var count = response.length;
 				for (var i=0; i<response.length; i++){
 					
-					html+="<tr><td>"+(count-i+1)+"</td>";
+					html+="<tr><td>"+(count-i)+"</td>";
 					html+="<td>"+response[i].name+"</td>";
 					html+="<td>"+response[i].count+"</td>";
 					html+="<td>"+response[i].description+"</td>";

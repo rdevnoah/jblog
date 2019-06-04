@@ -38,7 +38,7 @@
 	
 	
 	<!-- request, response와 연결한 controller base package 설정 -->
-	<context:component-scan base-package="com.cafe24.jblog.controller" />
+	<context:component-scan base-package="com.cafe24.jblog.controller, com.cafe24.jblog.exception" />
 
 	<!-- ViewResolver 설정 -->
 	<bean id="viewResolver"
