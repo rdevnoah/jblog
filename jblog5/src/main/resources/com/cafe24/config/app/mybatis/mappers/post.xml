@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="post">
+	<delete id="deleteAll">
+		<![CDATA[
+			delete from post
+		]]>
+	</delete>
+
+	<select id="getMainPost" parameterType="string" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, c.name as categoryName 
+			from post p, category c
+			where 
+			p.category_no = c.no
+			and
+			p.no=(select max(p.no)
+						from user u, blog b, category c, post p
+						where u.id = b.id and b.id = c.blog_id 
+						and c.no = p.category_no 
+						and u.id=#{id })
+		]]>
+	</select>
+	
+	<delete id="deleteByCategoryNo" parameterType="long">
+		<![CDATA[
+			delete from post where category_no=#{no }
+		]]>
+	</delete>
+	
+	<select id="getMainPostByNo" parameterType="long" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, c.name as categoryName
+			from post p, category c
+			where p.category_no = c.no 
+			and p.no=#{no }
+		]]>
+	</select>
+	
+	<select id="getMainPostByIdAndCategoryNo" parameterType="categoryvo" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, c.name as categoryName 
+			from post p, category c
+			where 
+			p.category_no = c.no
+			and p.no=(select max(p.no)
+						from user u, blog b, category c, post p
+						where u.id = b.id and b.id = c.blog_id 
+						and c.no = p.category_no 
+						and u.id=#{blogId }
+						and c.no=#{no })
+		]]>
+	</select>
+
+	<select id="getCount" resultType="int">
+		<![CDATA[
+			select count(*) from post
+		]]>
+	</select>
+
+	<insert id="insert" parameterType="postvo">
+		<![CDATA[
+			insert 
+			into post(no, title, contents, reg_date, category_no)
+			values(null, #{title }, #{contents }, now(), #{categoryNo }) 
+		]]>
+	</insert>
+	
+	<select id="getAllPostById" parameterType="string" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, u.id as blogId
+			from user u, blog b, category c, post p
+			where u.id = b.id and b.id = c.blog_id 
+				and c.no = p.category_no 
+				and u.id=#{id }
+		]]>
+	</select>
+	
+	<select id="getAllPostByIdAndCategoryNo" parameterType="categoryvo" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, u.id as blogId
+			from user u, blog b, category c, post p
+			where u.id = b.id and b.id = c.blog_id 
+				and c.no = p.category_no 
+				and u.id=#{blogId }
+				and c.no=#{no }
+		]]>
+	</select>
+	
+	<select id="getAllPostByIdAndCategoryNoAndPostNo" parameterType="map" resultType="postvo">
+		<![CDATA[
+			select p.no, p.title, p.contents, p.reg_date as regDate, p.category_no as categoryNo, u.id as blogId
+			from user u, blog b, category c, post p
+			where u.id = b.id and b.id = c.blog_id 
+				and c.no = p.category_no 
+				and u.id=#{id }
+				and c.no=#{categoryNo }
+				and p.no=#{postNo }
+		]]>
+	</select>
+	
+
+
+</mapper>
