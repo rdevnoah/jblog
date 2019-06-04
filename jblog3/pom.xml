@@ -9,123 +9,19 @@
 	</parent>
 	<artifactId>jblog3</artifactId>
 	<packaging>war</packaging>
-	<profiles>
-		<profile>
-			<id>production</id>
-			<build>
-				<resources>
-					<resource>
-						<directory>${project.basedir}/src/main/resources</directory>
-						<excludes>
-							<exclude>**/*.java</exclude>
-						</excludes>
-					</resource>
-					<resource>
-						<directory>${project.basedir}/src/main/production/resources</directory>
-						<excludes>
-							<exclude>**/*.java</exclude>
-						</excludes>
-					</resource>
-				</resources>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-resources-plugin</artifactId>
-						<configuration>
-							<encoding>UTF-8</encoding>
-						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>tomcat-maven-plugin</artifactId>
-						<configuration>
-							<url>http://127.0.0.1:8080/manager/text</url>
-							<path>/jblog3</path>
-							<username>admin</username>
-							<password>manager</password>
-						</configuration>
-					</plugin>
-
-				</plugins>
-			</build>
-			<dependencies>
-				<!-- Servlet -->
-				<dependency>
-					<groupId>javax.servlet</groupId>
-					<artifactId>javax.servlet-api</artifactId>
-					<version>3.0.1</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>javax.servlet.jsp</groupId>
-					<artifactId>jsp-api</artifactId>
-					<version>2.0</version>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-	</profiles>
-	<dependencies>
-		<!-- Spring core -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
-			<!-- JCL 제외 -->
-			<exclusions>
-				<exclusion>
-					<groupId>commons-logging</groupId>
-					<artifactId>commons-logging</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-		    <groupId>com.fasterxml.jackson.module</groupId>
-		    <artifactId>jackson-module-parameter-names</artifactId>
-		    <version>2.9.8</version>
-		</dependency>
-
-
-		<!-- Spring Web -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-webmvc</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency>
-	</dependencies>
-
+	
 	<build>
-		<finalName>${artifactId}</finalName>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<url>http://127.0.0.1:8080/manager/text</url>
+					<path>/jblog3</path>
+					<username>admin</username>
+					<password>manager</password>
 				</configuration>
 			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<configuration>
-					<warSourceDirectory>src/main/webapp</warSourceDirectory>
-				</configuration>
-			</plugin>
-
-
 		</plugins>
 	</build>
-
-
-
 </project>
