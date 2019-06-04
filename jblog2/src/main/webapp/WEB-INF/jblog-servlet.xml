@@ -32,7 +32,7 @@
 	<context:annotation-config />
 	
 	<!-- the mvc resources tag does the magic -->
-	<mvc:resources mapping="/assets/jblog/images/**" location="file:/Users/noah/jblog-uploads/blog/" />
+	<mvc:resources mapping="/assets/jblog/images/**" location="file:/usr/local/cafe24/jblog/images/" />
 	
 	
 	

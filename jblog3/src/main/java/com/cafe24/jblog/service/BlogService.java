@@ -23,7 +23,7 @@ import com.cafe24.jblog.vo.PostVo;
 @Service
 public class BlogService {
 
-	private static final String SAVE_PATH = "/Users/noah/jblog-uploads/blog";
+	private static final String SAVE_PATH = "/usr/local/cafe24/jblog/images";
 	private static final String URL = "images";
 
 	@Autowired
