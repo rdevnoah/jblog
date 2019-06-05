@@ -37,7 +37,7 @@
 	
 	<insert id="insert" parameterType="uservo">
 		<![CDATA[
-			it 
+			insert 
 			into user(id, name, password, reg_date)
 			values(#{id }, #{name }, #{password }, now()) 
 		]]>
