@@ -48,12 +48,6 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
-		<!-- Spring Boot JDBC -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
-
 		<!-- Common dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
