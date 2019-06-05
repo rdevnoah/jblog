@@ -48,6 +48,12 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
+		<!-- Spring Boot JDBC -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
 		<!-- Common dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -97,7 +103,7 @@
 				<artifactId>tomcat-maven-plugin</artifactId>
 				<configuration>
 					<url>http://127.0.0.1:8080/manager/text</url>
-					<path>/jblog55</path>
+					<path>/jblog555</path>
 					<username>admin</username>
 					<password>manager</password>
 				</configuration>
