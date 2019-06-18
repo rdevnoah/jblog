@@ -1,4 +1,3 @@
-
 package com.cafe24.security;
 
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +21,7 @@ public class AuthLoginInterceptor extends HandlerInterceptorAdapter {
 		
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
-		
+	
 		UserVo vo = new UserVo(id, password);
 		UserVo authUser = userService.getUserByIdAndPassword(vo);
 		
